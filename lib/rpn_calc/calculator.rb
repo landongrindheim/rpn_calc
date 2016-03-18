@@ -1,27 +1,31 @@
 module RpnCalc
-  class Calculator 
+  class Calculator
     def initialize(stack)
       @stack = stack
     end
 
     def process(input)
-      case
-      when number?(input)
-        #NumberHandler.new(stack).process(input)
-        stack << input
-      when valid_operator?(input)
-        #OperatorHandler.new(stack).process(input)
-        stack.perform(input)
-      when input.downcase == 'q'
-        exit
-      else
-        "numbers or operators only, please"
-      end
+      dispatch_based_on_input(input)
+    rescue => e
+      e.message
     end
 
     private
 
     attr_reader :stack
+
+    def dispatch_based_on_input(input)
+      case
+      when number?(input)
+        stack << input
+      when valid_operator?(input)
+        stack.perform(input)
+      when input.downcase == 'q'
+        exit
+      else
+        'numbers or operators only, please'
+      end
+    end
 
     VALID_OPERATORS = %w( + - * / ).freeze
 
@@ -30,7 +34,7 @@ module RpnCalc
     end
 
     def number?(input)
-      Float(input) != nil rescue false
+      !Float(input).nil? rescue false
     end
   end
 end
