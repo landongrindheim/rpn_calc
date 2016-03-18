@@ -16,10 +16,14 @@ module RpnCalc
       assert_equal 9, stack << 9
     end
 
-    def test_that_stack_accepts_multiple_inputs
-      stack = Stack.new
-      assert stack << 9
-      assert stack << 7
+    def test_that_stack_can_be_initialized_with_multiple_values
+      assert Stack.new(15, 7, 4)
+    end
+
+    def test_that_stack_can_only_be_initialized_with_numbers
+      assert_raises ArgumentError do
+        Stack.new(15, 'blerp', 4)
+      end
     end
 
     def test_that_perform_method_performs_addition
@@ -49,16 +53,19 @@ module RpnCalc
 
     def test_that_zero_cannot_be_divided_by
       stack = Stack.new(7, 0)
-      assert_raises RuntimeError do
+      error = assert_raises RuntimeError do
         stack.perform('/')
       end
+      assert_equal 'cannot divide by zero', error.message
     end
 
     def test_that_at_least_two_values_are_present_for_operation
       stack = Stack.new(4)
-      assert_raises RuntimeError do
+      error = assert_raises RuntimeError do
         stack.perform('+')
       end
+      assert_equal 'not enough values to perform operation',
+                   error.message
     end
   end
 end

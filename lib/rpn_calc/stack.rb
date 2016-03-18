@@ -1,7 +1,7 @@
 module RpnCalc
   class Stack
     def initialize(*args)
-      @stack = args
+      @stack = sanitize(args)
     end
 
     def <<(other)
@@ -20,9 +20,13 @@ module RpnCalc
 
     attr_reader :stack
 
+    def sanitize(values)
+      values.collect {|el| Float(el) }
+    end
+
     def validate_operations(operator)
       raise 'not enough values to perform operation' if stack.size < 2
-      raise 'cannot divide by zero' if operator == '/' && stack.last == 0
+      raise 'cannot divide by zero' if operator == '/' && last == 0
     end
 
     def value_as_float_or_integer

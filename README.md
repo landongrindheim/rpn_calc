@@ -1,14 +1,18 @@
 # RpnCalc
-## Installation
+A simple [Reverse Polish Notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation) calculator
 
-    $ gem install rpn_calc
+## Installation
+This gem is not currently hosted. To install, clone this repo and issue:
+
+    $ gem install --local path/to/file/rpn_calc-0.0.1.gem
 
 ## Usage
+Start the calculator by issuing
 
-TODO: Write usage instructions here
+    $ rpn_calc
 
-## Development
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+The program run until `q` or `ctrl+d` are given as inputs.
+
 
 ## License
 
