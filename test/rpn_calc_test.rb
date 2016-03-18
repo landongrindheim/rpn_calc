@@ -23,7 +23,7 @@ class RpnCalcTest < Minitest::Test
     assert_equal 5, @calculator.process('5')
     assert_equal 11, @calculator.process('+')
   end
- 
+
   def test_that_third_gist_example_is_replicable
     assert_equal 2, @calculator.process('2')
     assert_equal 9, @calculator.process('9')

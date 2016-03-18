@@ -18,24 +18,25 @@ module RpnCalc
 
     def test_that_stack_accepts_multiple_inputs
       stack = Stack.new
-      assert stack << 9 << 7
+      assert stack << 9
+      assert stack << 7
     end
 
     def test_that_perform_method_performs_addition
-      stack = Stack.new(7,8)
+      stack = Stack.new(7, 8)
       assert_equal 15, stack.perform('+')
     end
 
     def test_that_perform_method_performs_subtraction
-      stack = Stack.new(15,11)
+      stack = Stack.new(15, 11)
       assert_equal 4, stack.perform('-')
     end
-    
+
     def test_that_perform_method_performs_division
       stack = Stack.new(15, 5)
       assert_equal 3, stack.perform('/')
     end
-   
+
     def test_that_perform_method_performs_multiplication
       stack = Stack.new(7, 8)
       assert_equal 56, stack.perform('*')

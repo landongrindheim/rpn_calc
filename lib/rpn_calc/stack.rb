@@ -12,7 +12,7 @@ module RpnCalc
     def perform(operator)
       validate_operations(operator)
       was_last = stack.pop.to_f
-      stack[-1] = stack[-1].send(operator, was_last) 
+      stack[-1] = stack[-1].send(operator, was_last)
       value_as_float_or_integer
     end
 
@@ -26,7 +26,7 @@ module RpnCalc
     end
 
     def value_as_float_or_integer
-     last % 1 == 0 ? last.to_i : last
+      last % 1 == 0 ? last.to_i : last
     end
 
     def last
