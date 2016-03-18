@@ -13,6 +13,10 @@ Start the calculator by issuing
 
 The program run until `q` or `ctrl+d` are given as inputs.
 
+To run tests
+
+    $ rake test
+
 
 ## License
 
